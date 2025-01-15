@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Shadow from "@/components/global/Shadow.astro";
 import Footer from "@/components/global/Footer.astro";
-import Logo from "@/components/global/Logo.astro";
+import Navigation from "@/components/global/Navigation.astro";
 
 const services = [
   {
@@ -69,53 +69,35 @@ const process = [
     description: "Smooth deployment with zero downtime"
   }
 ];
+
+const features = [
+  {
+    title: "Page Builder Expertise",
+    description: "Expert development with Elementor, Beaver Builder, and Bricks"
+  },
+  {
+    title: "Custom Development",
+    description: "Tailored solutions for your specific business needs"
+  },
+  {
+    title: "Performance Focus",
+    description: "Optimized code for maximum speed and efficiency"
+  },
+  {
+    title: "Future-Proof",
+    description: "Scalable solutions that grow with your business"
+  }
+];
 ---
 
 <BaseLayout>
   <section class="relative overflow-hidden">
     <Shadow />
     <div class="p-8 lg:px-44 lg:py-24 2xl:px-24 relative">
-      <!-- Header Section -->
+      <Navigation />
+      
+      <!-- Intro Section -->
       <div class="flex flex-col gap-12">
-        <div class="flex items-center justify-between">
-          <Logo />
-          <div class="flex items-center gap-8">
-            <Text
-              tag="a"
-              href="/about"
-              variant="textSM"
-              class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
-            >
-              About
-            </Text>
-            <Text
-              tag="a"
-              href="/tools"
-              variant="textSM"
-              class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
-            >
-              Tools
-            </Text>
-            <Text
-              tag="a"
-              href="/development"
-              variant="textSM"
-              class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
-            >
-              Development
-            </Text>
-            <Text
-              tag="a"
-              href="#schedule"
-              variant="textSM"
-              class="bg-black text-white dark:bg-white dark:text-black px-4 py-2 hover:bg-zinc-800 dark:hover:bg-zinc-200 duration-200"
-            >
-              Schedule Now
-            </Text>
-          </div>
-        </div>
-
-        <!-- Intro Section -->
         <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
           <div class="flex items-center gap-2 text-black dark:text-white">
             <div class="size-2 rounded-lg bg-green-500 animate-pulse"></div>
@@ -124,7 +106,7 @@ const process = [
               variant="textSM"
               class="text-black dark:text-white"
             >
-              Custom WooCommerce Development Services
+              Development Services
             </Text>
           </div>
           <Text
@@ -132,26 +114,26 @@ const process = [
             variant="displayLG"
             class="text-black dark:text-white tracking-wide text-balance font-serif italic"
           >
-            Expert WordPress & WooCommerce Development
+            Custom WooCommerce Development
           </Text>
           <Text
-            variant="textSM"
+            variant="textLG"
             class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
           >
-            From custom themes to complex plugins, we build tailored solutions that drive results for your WooCommerce store.
+            Expert development services for your WooCommerce store, from custom themes to complex functionality.
           </Text>
         </div>
 
-        <!-- Development Process -->
+        <!-- Features Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 border-x border-dashed border-zinc-300 dark:border-zinc-700">
-          {process.map((item) => (
+          {features.map((item) => (
             <div>
               <Text
                 tag="h3"
                 variant="textBase"
                 class="text-black dark:text-white block font-semibold"
               >
-                {item.step}. {item.title}
+                {item.title}
               </Text>
               <Text
                 tag="p"
@@ -176,7 +158,6 @@ const process = [
                 {service.title}
               </Text>
               <Text
-                tag="p"
                 variant="textSM"
                 class="text-zinc-500 dark:text-zinc-400 mt-2"
               >
@@ -206,7 +187,7 @@ const process = [
                   </li>
                 ))}
               </ul>
-              <div class="mt-8">
+              <div class="mt-6">
                 <Text
                   tag="p"
                   variant="textBase"
@@ -227,7 +208,38 @@ const process = [
           ))}
         </div>
 
-        <!-- Contact CTA -->
+        <!-- Development Process -->
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <Text
+            tag="h2"
+            variant="displaySM"
+            class="font-serif italic text-black dark:text-white"
+          >
+            Development Process
+          </Text>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+            {process.map((item) => (
+              <div>
+                <Text
+                  tag="h3"
+                  variant="textBase"
+                  class="text-black dark:text-white block font-semibold"
+                >
+                  {item.step}. {item.title}
+                </Text>
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="text-zinc-500 dark:text-zinc-400 mt-2"
+                >
+                  {item.description}
+                </Text>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA Section -->
         <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
           <Text
             tag="h2"
@@ -254,6 +266,7 @@ const process = [
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   </section>

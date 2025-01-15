@@ -1,0 +1,126 @@
+---
+import Text from "../fundations/elements/Text.astro";
+---
+
+<div
+  x-data="{ isOpen: false }"
+  class="lg:hidden"
+>
+  <!-- Hamburger Button -->
+  <button
+    @click="isOpen = !isOpen"
+    class="text-black dark:text-white p-2"
+    aria-label="Menu"
+  >
+    <svg
+      x-show="!isOpen"
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      ></path>
+    </svg>
+    <svg
+      x-show="isOpen"
+      x-cloak
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
+    </svg>
+  </button>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    x-show="isOpen"
+    x-cloak
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 translate-x-full"
+    x-transition:enter-end="opacity-100 translate-x-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-x-0"
+    x-transition:leave-end="opacity-0 translate-x-full"
+    class="fixed inset-0 z-50 bg-[#f7f7f7] dark:bg-[#1a1c1f]"
+  >
+    <div class="flex flex-col h-full p-8">
+      <div class="flex justify-end">
+        <button
+          @click="isOpen = false"
+          class="text-black dark:text-white p-2"
+          aria-label="Close menu"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col items-center justify-center flex-grow gap-8">
+        <Text
+          tag="a"
+          href="/about"
+          @click="isOpen = false"
+          variant="displayXS"
+          class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
+        >
+          About
+        </Text>
+        <Text
+          tag="a"
+          href="/tools"
+          @click="isOpen = false"
+          variant="displayXS"
+          class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
+        >
+          Tools
+        </Text>
+        <Text
+          tag="a"
+          href="/development"
+          @click="isOpen = false"
+          variant="displayXS"
+          class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
+        >
+          Development
+        </Text>
+        <Text
+          tag="a"
+          href="#schedule"
+          @click="isOpen = false"
+          variant="displayXS"
+          class="bg-black text-white dark:bg-white dark:text-black px-8 py-4 hover:bg-zinc-800 dark:hover:bg-zinc-200 duration-200"
+        >
+          Schedule Now
+        </Text>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

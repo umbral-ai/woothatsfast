@@ -1,34 +1,19 @@
 @import "tailwindcss";
 @theme {
-  /* Typography */
   --font-serif: Instrument Serif, serif;
   --font-sans: Inter, sans-serif;
 }
 
-/* CSS */
 :root {
-  /* Typography stylistic sets for Inter
-  font-feature-settings:
- /*-------- NUMBERS --------*/
-    /* Tabular numbers */ "tnum"
-      1,
-    /* Slashed zero */ "zero" 1, /* Alternate one */ "cv01" 1,
-    /* Flat-top three */ "cv09" 1, /* Open four */ "cv02" 1,
-    /* Open six */ "cv03" 1, /* Open nine */ "cv04" 1,
-
-    /*-------- LETTERS --------*/ /* Square punctuation */ "ss08" 1,
-    /* Discretionary ligatures */ "dlig" 1, /* Simplified u */ "cv06" 1,
-    /* Capital G with spur */ "cv10" 1, /* Compact t */ "cv13" 1;
+  font-feature-settings: "tnum" 1, "zero" 1, "cv01" 1, "cv09" 1, "cv02" 1,
+    "cv03" 1, "cv04" 1, "ss08" 1, "dlig" 1, "cv06" 1, "cv10" 1, "cv13" 1;
 }
+
 @supports (font-variation-settings: normal) {
-  /* Use variable font if supported */
   :root {
     font-family: InterVariable, sans-serif;
   }
 }
-
-
-/* Type animation */
 
 .typing-animation .cursor {
   display: inline-block;
@@ -47,4 +32,31 @@
   100% {
     opacity: 1;
   }
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+/* Mobile menu transitions */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 200ms ease-in, transform 200ms ease-in;
 }

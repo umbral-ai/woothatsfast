@@ -5,58 +5,77 @@ import Shadow from "@/components/global/Shadow.astro";
 import Footer from "@/components/global/Footer.astro";
 import Navigation from "@/components/global/Navigation.astro";
 
-const expertise = [
+const benefits = [
   {
-    title: "Page Builder Mastery",
-    items: [
-      "Elementor optimization specialist",
-      "Beaver Builder expert",
-      "Bricks Builder professional",
-      "Custom theme development",
-      "Performance-focused implementations",
-      "Clean code architecture"
+    title: "White Label Partnership",
+    description: "We work seamlessly as your dedicated development team, maintaining your brand identity throughout all client interactions."
+  },
+  {
+    title: "Dedicated Resources",
+    description: "Get priority access to our expert developers for your client projects with guaranteed availability."
+  },
+  {
+    title: "Technical Excellence",
+    description: "Leverage our deep expertise in WooCommerce, WordPress, and ecommerce optimization."
+  },
+  {
+    title: "Scalable Support",
+    description: "Scale your agency's capabilities without the overhead of hiring full-time developers."
+  }
+];
+
+const services = [
+  {
+    title: "Development Services",
+    features: [
+      "Custom WooCommerce development",
+      "Theme customization",
+      "Plugin development",
+      "Performance optimization",
+      "API integrations",
+      "Payment gateway setup"
     ]
   },
   {
-    title: "Core Competencies",
-    items: [
-      "WooCommerce optimization",
-      "Custom plugin development",
-      "Speed optimization",
-      "Server-side optimization",
-      "Database optimization",
-      "Security hardening"
+    title: "Technical Support",
+    features: [
+      "24/7 emergency support",
+      "Regular maintenance",
+      "Security updates",
+      "Performance monitoring",
+      "Technical consulting",
+      "Code reviews"
     ]
   },
   {
-    title: "Development Philosophy",
-    items: [
-      "Reduce plugin dependencies",
-      "Future-proof architecture",
-      "Performance-first approach",
-      "Scalable solutions",
-      "Clean code practices",
-      "Maintainable systems"
+    title: "Project Management",
+    features: [
+      "Dedicated project manager",
+      "Clear communication",
+      "Regular updates",
+      "Timeline management",
+      "Resource allocation",
+      "Quality assurance"
     ]
   }
 ];
 
-const principles = [
+const process = [
   {
-    title: "Speed First",
-    description: "Every millisecond counts in ecommerce. I optimize for maximum performance without compromising functionality."
+    title: "Partnership Setup",
+    description: "Quick onboarding process to understand your agency's needs and establish communication channels."
   },
   {
-    title: "Reduce Dependencies",
-    description: "Fewer plugins mean better performance, security, and maintainability. I build lean, efficient solutions."
+    title: "Resource Allocation",
+    description: "Dedicated team members assigned to your agency with guaranteed availability."
   },
   {
-    title: "Customer Experience",
-    description: "Fast, intuitive, and reliable stores lead to higher conversion rates and customer satisfaction."
+    title: "Project Execution",
+    description: "Seamless delivery of projects with regular updates and clear communication."
   },
   {
-    title: "Future Proof",
-    description: "Building with scalability and maintainability in mind ensures your store grows with your business."
+    title: "Ongoing Support",
+    description: "Continuous support and maintenance to ensure long-term success."
   }
 ];
 ---
@@ -77,7 +96,7 @@ const principles = [
               variant="textSM"
               class="text-black dark:text-white"
             >
-              Meet Your WooCommerce Expert
+              Agency Partnerships
             </Text>
           </div>
           <Text
@@ -85,19 +104,19 @@ const principles = [
             variant="displayLG"
             class="text-black dark:text-white tracking-wide text-balance font-serif italic"
           >
-            Daniel Snell
+            Your Dedicated WooCommerce Development Team
           </Text>
           <Text
             variant="textLG"
             class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
           >
-            WordPress & WooCommerce optimization specialist with a passion for building high-performance ecommerce solutions that stand the test of time.
+            Scale your agency's capabilities with our expert WooCommerce development team. We work as an extension of your agency, delivering high-quality solutions for your clients.
           </Text>
         </div>
 
-        <!-- Core Philosophy -->
+        <!-- Benefits Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 border-x border-dashed border-zinc-300 dark:border-zinc-700">
-          {principles.map((item) => (
+          {benefits.map((item) => (
             <div>
               <Text
                 tag="h3"
@@ -117,19 +136,19 @@ const principles = [
           ))}
         </div>
 
-        <!-- Expertise Grid -->
+        <!-- Services Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {expertise.map((section) => (
+          {services.map((service) => (
             <div class="border border-dashed p-8 border-zinc-300 dark:border-zinc-700">
               <Text
                 tag="h3"
                 variant="displayXS"
                 class="font-serif italic text-black dark:text-white"
               >
-                {section.title}
+                {service.title}
               </Text>
               <ul class="mt-6 space-y-2">
-                {section.items.map((item) => (
+                {service.features.map((feature) => (
                   <li class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
                     <div class="ring-1 ring-zinc-200 dark:ring-zinc-700 p-[0.110rem] bg-white/5 shadow rounded-sm">
                       <svg
@@ -147,7 +166,7 @@ const principles = [
                       </svg>
                     </div>
                     <Text variant="textSM">
-                      {item}
+                      {feature}
                     </Text>
                   </li>
                 ))}
@@ -156,36 +175,34 @@ const principles = [
           ))}
         </div>
 
-        <!-- Philosophy Section -->
+        <!-- Process Section -->
         <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
           <Text
             tag="h2"
             variant="displaySM"
             class="font-serif italic text-black dark:text-white"
           >
-            Why Optimization Matters
+            Partnership Process
           </Text>
-          <Text
-            variant="textLG"
-            class="text-zinc-500 dark:text-zinc-400 mt-4 max-w-3xl"
-          >
-            In today's competitive ecommerce landscape, performance isn't just about speed – it's about creating sustainable, maintainable solutions that drive business growth. By reducing dependencies and focusing on core functionality, we build stores that not only perform better but are easier to maintain and scale.
-          </Text>
-          <div class="mt-8">
-            <Text
-              tag="p"
-              variant="textBase"
-              class="text-black dark:text-white"
-            >
-              "The best ecommerce solutions are those that prioritize both performance and maintainability. Every store I build is designed with this philosophy at its core."
-            </Text>
-            <Text
-              tag="p"
-              variant="textSM"
-              class="text-zinc-500 dark:text-zinc-400 mt-2"
-            >
-              — Daniel Snell
-            </Text>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+            {process.map((item, index) => (
+              <div>
+                <Text
+                  tag="h3"
+                  variant="textBase"
+                  class="text-black dark:text-white block font-semibold"
+                >
+                  {index + 1}. {item.title}
+                </Text>
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="text-zinc-500 dark:text-zinc-400 mt-2"
+                >
+                  {item.description}
+                </Text>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -196,13 +213,13 @@ const principles = [
             variant="displaySM"
             class="font-serif italic text-black dark:text-white"
           >
-            Ready to optimize your store?
+            Ready to scale your agency?
           </Text>
           <Text
             variant="textSM"
             class="text-zinc-500 dark:text-zinc-400 mt-4"
           >
-            Let's discuss how we can improve your store's performance and create a better experience for your customers.
+            Let's discuss how we can help your agency deliver exceptional WooCommerce solutions to your clients.
           </Text>
           <div class="mt-8">
             <Text
@@ -211,7 +228,7 @@ const principles = [
               variant="textSM"
               class="inline-block bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:bg-zinc-800 dark:hover:bg-zinc-200 duration-200"
             >
-              Schedule a Consultation
+              Schedule Partnership Call
             </Text>
           </div>
         </div>
