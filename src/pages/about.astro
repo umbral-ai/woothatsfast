@@ -1,0 +1,259 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Shadow from "@/components/global/Shadow.astro";
+import Footer from "@/components/global/Footer.astro";
+import Logo from "@/components/global/Logo.astro";
+
+const expertise = [
+  {
+    title: "Page Builder Mastery",
+    items: [
+      "Elementor optimization specialist",
+      "Beaver Builder expert",
+      "Bricks Builder professional",
+      "Custom theme development",
+      "Performance-focused implementations",
+      "Clean code architecture"
+    ]
+  },
+  {
+    title: "Core Competencies",
+    items: [
+      "WooCommerce optimization",
+      "Custom plugin development",
+      "Speed optimization",
+      "Server-side optimization",
+      "Database optimization",
+      "Security hardening"
+    ]
+  },
+  {
+    title: "Development Philosophy",
+    items: [
+      "Reduce plugin dependencies",
+      "Future-proof architecture",
+      "Performance-first approach",
+      "Scalable solutions",
+      "Clean code practices",
+      "Maintainable systems"
+    ]
+  }
+];
+
+const principles = [
+  {
+    title: "Speed First",
+    description: "Every millisecond counts in ecommerce. I optimize for maximum performance without compromising functionality."
+  },
+  {
+    title: "Reduce Dependencies",
+    description: "Fewer plugins mean better performance, security, and maintainability. I build lean, efficient solutions."
+  },
+  {
+    title: "Customer Experience",
+    description: "Fast, intuitive, and reliable stores lead to higher conversion rates and customer satisfaction."
+  },
+  {
+    title: "Future Proof",
+    description: "Building with scalability and maintainability in mind ensures your store grows with your business."
+  }
+];
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Shadow />
+    <div class="p-8 lg:px-44 lg:py-24 2xl:px-24 relative">
+      <!-- Header Section -->
+      <div class="flex flex-col gap-12">
+        <div class="flex items-center justify-between">
+          <Logo />
+          <div class="flex items-center gap-8">
+            <Text
+              tag="a"
+              href="/about"
+              variant="textSM"
+              class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
+            >
+              About
+            </Text>
+            <Text
+              tag="a"
+              href="/tools"
+              variant="textSM"
+              class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
+            >
+              Tools
+            </Text>
+            <Text
+              tag="a"
+              href="/development"
+              variant="textSM"
+              class="text-zinc-500 hover:text-black dark:hover:text-white duration-200"
+            >
+              Development
+            </Text>
+            <Text
+              tag="a"
+              href="#schedule"
+              variant="textSM"
+              class="bg-black text-white dark:bg-white dark:text-black px-4 py-2 hover:bg-zinc-800 dark:hover:bg-zinc-200 duration-200"
+            >
+              Schedule Now
+            </Text>
+          </div>
+        </div>
+
+        <!-- Intro Section -->
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <div class="flex items-center gap-2 text-black dark:text-white">
+            <div class="size-2 rounded-lg bg-green-500 animate-pulse"></div>
+            <Text
+              tag="p"
+              variant="textSM"
+              class="text-black dark:text-white"
+            >
+              Meet Your WooCommerce Expert
+            </Text>
+          </div>
+          <Text
+            tag="h1"
+            variant="displayLG"
+            class="text-black dark:text-white tracking-wide text-balance font-serif italic"
+          >
+            Daniel Snell
+          </Text>
+          <Text
+            variant="textLG"
+            class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
+          >
+            WordPress & WooCommerce optimization specialist with a passion for building high-performance ecommerce solutions that stand the test of time.
+          </Text>
+        </div>
+
+        <!-- Core Philosophy -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 border-x border-dashed border-zinc-300 dark:border-zinc-700">
+          {principles.map((item) => (
+            <div>
+              <Text
+                tag="h3"
+                variant="textBase"
+                class="text-black dark:text-white block font-semibold"
+              >
+                {item.title}
+              </Text>
+              <Text
+                tag="p"
+                variant="textBase"
+                class="text-zinc-500 dark:text-zinc-400 text-pretty"
+              >
+                {item.description}
+              </Text>
+            </div>
+          ))}
+        </div>
+
+        <!-- Expertise Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {expertise.map((section) => (
+            <div class="border border-dashed p-8 border-zinc-300 dark:border-zinc-700">
+              <Text
+                tag="h3"
+                variant="displayXS"
+                class="font-serif italic text-black dark:text-white"
+              >
+                {section.title}
+              </Text>
+              <ul class="mt-6 space-y-2">
+                {section.items.map((item) => (
+                  <li class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+                    <div class="ring-1 ring-zinc-200 dark:ring-zinc-700 p-[0.110rem] bg-white/5 shadow rounded-sm">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check size-2.5"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </div>
+                    <Text variant="textSM">
+                      {item}
+                    </Text>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <!-- Philosophy Section -->
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <Text
+            tag="h2"
+            variant="displaySM"
+            class="font-serif italic text-black dark:text-white"
+          >
+            Why Optimization Matters
+          </Text>
+          <Text
+            variant="textLG"
+            class="text-zinc-500 dark:text-zinc-400 mt-4 max-w-3xl"
+          >
+            In today's competitive ecommerce landscape, performance isn't just about speed – it's about creating sustainable, maintainable solutions that drive business growth. By reducing dependencies and focusing on core functionality, we build stores that not only perform better but are easier to maintain and scale.
+          </Text>
+          <div class="mt-8">
+            <Text
+              tag="p"
+              variant="textBase"
+              class="text-black dark:text-white"
+            >
+              "The best ecommerce solutions are those that prioritize both performance and maintainability. Every store I build is designed with this philosophy at its core."
+            </Text>
+            <Text
+              tag="p"
+              variant="textSM"
+              class="text-zinc-500 dark:text-zinc-400 mt-2"
+            >
+              — Daniel Snell
+            </Text>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <Text
+            tag="h2"
+            variant="displaySM"
+            class="font-serif italic text-black dark:text-white"
+          >
+            Ready to optimize your store?
+          </Text>
+          <Text
+            variant="textSM"
+            class="text-zinc-500 dark:text-zinc-400 mt-4"
+          >
+            Let's discuss how we can improve your store's performance and create a better experience for your customers.
+          </Text>
+          <div class="mt-8">
+            <Text
+              tag="a"
+              href="#schedule"
+              variant="textSM"
+              class="inline-block bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:bg-zinc-800 dark:hover:bg-zinc-200 duration-200"
+            >
+              Schedule a Consultation
+            </Text>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  </section>
+</BaseLayout>
