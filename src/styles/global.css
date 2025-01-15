@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@theme {
+  /* Typography */
+  --font-serif: Instrument Serif, serif;
+  --font-sans: Inter, sans-serif;
+}
+
+/* CSS */
+:root {
+  /* Typography stylistic sets for Inter
+  font-feature-settings:
+ /*-------- NUMBERS --------*/
+    /* Tabular numbers */ "tnum"
+      1,
+    /* Slashed zero */ "zero" 1, /* Alternate one */ "cv01" 1,
+    /* Flat-top three */ "cv09" 1, /* Open four */ "cv02" 1,
+    /* Open six */ "cv03" 1, /* Open nine */ "cv04" 1,
+
+    /*-------- LETTERS --------*/ /* Square punctuation */ "ss08" 1,
+    /* Discretionary ligatures */ "dlig" 1, /* Simplified u */ "cv06" 1,
+    /* Capital G with spur */ "cv10" 1, /* Compact t */ "cv13" 1;
+}
+@supports (font-variation-settings: normal) {
+  /* Use variable font if supported */
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+
+/* Type animation */
+
+.typing-animation .cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: #777;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,241 @@
+---
+import Discord from "../icons/Discord.astro";
+import Stripe from "../icons/Stripe.astro";
+import Text from "../fundations/elements/Text.astro";
+import StarBottomLeft from "../assets/StarBottomLeft.astro";
+import StarBottomRight from "../assets/StarBottomRight.astro";
+import StarTopLeft from "../assets/StarTopLeft.astro";
+import StarTopRight from "../assets/StarTopRight.astro";
+const target = [
+  {
+    item: "...loads slowly",
+  },
+  {
+    item: "...has poor mobile experience",
+  },
+  {
+    item: "...struggles with checkout process",
+  },
+  {
+    item: "...needs payment gateway optimization",
+  },
+  {
+    item: "...requires custom features",
+  },
+  {
+    item: "...has inventory management issues",
+  },
+  {
+    item: "...needs better product displays",
+  },
+  {
+    item: "...lacks performance optimization",
+  },
+  {
+    item: "...requires security improvements",
+  },
+  {
+    item: "...needs third-party integrations",
+  },
+];
+const listItems = [
+  "Full store performance audit",
+  "Custom development solutions",
+  "Speed optimization",
+  "Mobile responsiveness fixes",
+  "Security enhancements",
+  "30 days of support",
+];
+---
+
+<div
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative border border-dashed border-zinc-300 dark:border-zinc-700"
+>
+  <StarTopLeft />
+  <StarTopRight />
+  <StarBottomLeft />
+  <StarBottomRight />
+  <div
+    class="gap-8 p-8 flex flex-col justify-between h-full text-black dark:text-white relative lg:border-r border-zinc-300 dark:border-zinc-700 lg:col-span-2"
+  >
+    <div>
+      <Text
+        tag="h3"
+        variant="displaySM"
+        class="font-serif italic text-black dark:text-white"
+      >
+        Custom WooCommerce Solutions
+      </Text>
+      <Text tag="p" variant="textBase" class="text-zinc-500 dark:text-zinc-400">
+        Expert optimization and development for your online store.
+      </Text>
+    </div>
+    <div class="flex flex-col justify-between relative">
+      <Text
+        tag="p"
+        variant="textBase"
+        class="tracking-tight text-black dark:text-white relative"
+      >
+        Is your WooCommerce store experiencing:
+      </Text>
+      <ul
+        class="grid grid-cols-1 2xl:text-base mt-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2 md:col-span-2 relative"
+      >
+        {
+          target.map(({ item }) => (
+            <li>
+              <div class="flex gap-2 items-center text-zinc-500 dark:text-zinc-400">
+                <div class=" ring-1 ring-zinc-200 dark:ring-zinc-700 p-[0.110rem] bg-white/5 shadow  rounded-sm ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-check size-2.5"
+                  >
+                    <>
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M5 12l5 5l10 -10" />
+                    </>
+                  </svg>
+                </div>
+                {item}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <Text
+        tag="p"
+        variant="textBase"
+        class="tracking-tighter text-black dark:text-white mt-8 relative"
+      >
+        Let's optimize your store for peak performance.
+      </Text>
+    </div>
+    <div
+      class="border-t flex flex-col pt-4 mt-4 text-zinc-500 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700"
+    >
+      <Text tag="p" variant="textXS" class="2xl:text-base">
+        We specialize in WooCommerce optimization, custom development, payment gateway integration, 
+        security enhancements, and performance tuning. Our team of experts will analyze your store
+        and implement solutions that drive results.
+      </Text>
+      <Text
+        tag="span"
+        variant="textXS"
+        class="mt-2 pt-2 border-t font-normal border-zinc-300 dark:border-zinc-700"
+      >
+        Project updates via <span
+          class="italic text-black dark:text-white font-medium">Discord</span
+        >, secure payments with <span
+          class="italic text-black dark:text-white font-medium">Stripe</span
+        >
+      </Text>
+      <div
+        class="inline-flex items-center gap-2 mt-1 text-black dark:text-white"
+      >
+        <Discord />
+        <span class="text-oxido text-2xl">—</span>
+        <Stripe />
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex flex-col h-full justify-between p-8 overflow-hidden relative bg-white/30 dark:bg-white/5"
+  >
+    <div class="relative">
+      <div class="flex flex-col">
+        <Text
+          tag="h3"
+          variant="displaySM"
+          class="font-serif italic tracking-wide text-black dark:text-white"
+        >
+          Store Optimization Package
+        </Text>
+      </div>
+      <Text tag="p" variant="textBase" class="text-black dark:text-white">
+        Starting at $2,499
+        <Text
+          tag="span"
+          variant="textXS"
+          class="text-zinc-700 dark:text-zinc-400">USD + Local tax</Text
+        >
+      </Text>
+      <div class="mt-8">
+        <Text
+          tag="p"
+          variant="textSM"
+          class="text-black dark:text-white font-medium uppercase"
+        >
+          Includes
+        </Text>
+        <ul
+          class="flex flex-col mt-2 list-none list-inside text-zinc-700 dark:text-zinc-400 gap-y-2"
+          role="list"
+        >
+          {
+            listItems.map((item) => (
+              <li class="flex gap-2 items-center 2xl:items-start">
+                <Text tag="p" variant="textSM" class="2xl:text.base">
+                  <Text tag="span">—</Text>
+                  <Text tag="span">{item}</Text>
+                </Text>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="flex mt-4 justify-center relative w-full">
+        <Text
+          tag="a"
+          variant="textBase"
+          href="#_"
+          class="flex h-12 items-center font-medium justify-center w-full duration-500 ring-1 dark:bg-white dark:text-black bg-black ring-inset ring-black hover:ring-zinc-700 text-white dark:hover:ring-zinc-700 dark:hover:bg-white/10 dark:hover:text-white"
+        >
+          Optimize My Store
+        </Text>
+      </div>
+      <Text tag="p" variant="textXS" class="text-black dark:text-white mt-4">
+        Want to discuss your specific needs?
+        <Text
+          tag="a"
+          href="#_"
+          class="text-black dark:text-white duration-500 block"
+        >
+          — Schedule a consultation
+          <span>»</span>
+        </Text>
+      </Text>
+    </div>
+    <div class="w-full mt-4 relative">
+      <Text tag="a" href="#_" class="duration-500 block">
+        <Text
+          tag="span"
+          class="text-base mt-8 tracking-tight text-black dark:text-white"
+        >
+          <Text tag="span" class="text-base text-black dark:text-white block">
+            Custom Development
+            <Text tag="span" class="text-zinc-500 dark:text-zinc-400 text-xs"
+              >Starting at $999</Text
+            >
+          </Text>
+          For specific feature development.
+        </Text>
+      </Text>
+      <Text
+        tag="p"
+        variant="textXS"
+        class="mt-2 text-zinc-500 dark:text-zinc-400"
+      >
+        Examples:
+        <Text tag="span" class="italic">
+          Custom plugins, payment gateways, API integrations, etc.</Text
+        >
+      </Text>
+    </div>
+  </div>
+</div>

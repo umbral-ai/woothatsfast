@@ -1,0 +1,19 @@
+{
+  "name": "@theme/streamer",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "astro": "astro",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@tailwindcss/vite": "^4.0.0-beta.8",
+    "astro": "^5.1.1",
+    "tailwindcss": "^4.0.0-beta.8"
+  }
+}

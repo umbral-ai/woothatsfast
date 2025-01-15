@@ -1,0 +1,103 @@
+---
+import "../styles/global.css";
+import { AstroSeo } from "@astrolib/seo";
+
+const title = "WooThatsFast - WooCommerce Optimization & Development Services";
+const description = "Expert WooCommerce optimization and custom development services to boost your store's speed, conversion rate, and revenue. Specializing in performance tuning, security enhancements, and custom solutions.";
+const ogImage = "https://woothasfast.com/og-image.jpg"; // Replace with actual OG image URL
+const siteUrl = "https://woothasfast.com";
+---
+
+<AstroSeo
+  title={title}
+  description={description}
+  canonical={siteUrl}
+  openGraph={{
+    url: siteUrl,
+    title: title,
+    description: description,
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "WooThatsFast - WooCommerce Optimization Services",
+        type: "image/jpeg",
+      },
+    ],
+    site_name: "WooThatsFast",
+    type: "website",
+    locale: "en_US",
+  }}
+  twitter={{
+    handle: "@woothasfast",
+    site: "@woothasfast",
+    cardType: "summary_large_image",
+  }}
+/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Basic Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content="woocommerce optimization, woocommerce development, ecommerce speed optimization, wordpress optimization, custom woocommerce development, ecommerce performance, woocommerce security" />
+<meta name="author" content="WooThatsFast" />
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+
+<!-- Favicon for IE -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+<!-- Favicons for different sizes -->
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={siteUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={siteUrl} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={siteUrl} />
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" content="#1a1c1f" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f7f7f7" media="(prefers-color-scheme: light)" />
+
+<!-- For IE -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+<!-- Alpine.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

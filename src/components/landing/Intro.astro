@@ -1,0 +1,108 @@
+---
+import Logo from "../global/Logo.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+const steps = [
+  {
+    day: "Step 1",
+    title: "Discovery",
+    description: "We analyze your WooCommerce store and identify optimization opportunities.",
+  },
+  {
+    day: "Step 2",
+    title: "Strategy",
+    description: "Create a custom optimization plan for your specific needs.",
+  },
+  {
+    day: "Step 3",
+    title: "Implementation",
+    description: "Execute optimizations and custom development solutions.",
+  },
+  {
+    day: "Step 4",
+    title: "Testing",
+    description: "Thorough testing and performance validation of all improvements.",
+  },
+];
+---
+
+<div class="flex flex-col gap-12">
+  <Logo />
+
+  <div
+    class="flex flex-col lg:flex-row border p-8 border-dashed border-zinc-300 dark:border-zinc-700"
+  >
+    <div>
+      <div class="flex items-center gap-2 text-black dark:text-white">
+        <div class="size-2 rounded-lg bg-green-500 animate-pulse"></div>
+        <Text
+          tag="p"
+          variant="textSM"
+          class="text-black dark:text-white typing-animation"
+          data-text="Expert WooCommerce Development & Optimization"
+        >
+          <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+        </Text>
+      </div>
+      <Text
+        tag="h1"
+        variant="displayLG"
+        class="text-black dark:text-white tracking-wide text-balance font-serif italic"
+      >
+        Supercharge your WooCommerce store's performance
+      </Text>
+      <Text
+        variant="textSM"
+        class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty"
+      >
+        Custom development and optimization services to boost your store's speed, conversion rate, and revenue.
+      </Text>
+    </div>
+  </div>
+</div>
+<ul
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 border-x border-dashed border-zinc-300 dark:border-zinc-700"
+>
+  {
+    steps.map((step) => (
+      <li>
+        <Text
+          tag="h3"
+          variant="textBase"
+          class="text-black dark:text-white block font-semibold"
+        >
+          {step.day}. {step.title}
+        </Text>
+        <Text
+          tag="p"
+          variant="textBase"
+          class="text-zinc-500 dark:text-zinc-400 text-pretty"
+        >
+          {step.description}
+        </Text>
+      </li>
+    ))
+  }
+</ul>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".typing-animation");
+
+    elements.forEach((element) => {
+      const text = element.dataset.text;
+      const typedTextSpan = element.querySelector(".typed-text");
+      const cursorSpan = element.querySelector(".cursor");
+      const typingSpeed = 100;
+
+      const typeText = (index = 0) => {
+        if (index <= text.length) {
+          typedTextSpan.textContent = text.substring(0, index);
+          setTimeout(() => typeText(index + 1), typingSpeed);
+        }
+      };
+
+      // Start the typing animation
+      setTimeout(() => typeText(), 1500);
+    });
+  });
+</script>

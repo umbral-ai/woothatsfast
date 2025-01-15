@@ -1,0 +1,109 @@
+---
+import Text from "../fundations/elements/Text.astro";
+const faq = [
+  {
+    question: "What's included in the WooCommerce optimization service?",
+    answer:
+      "Our comprehensive service includes performance optimization, security hardening, mobile responsiveness improvements, payment gateway optimization, and custom development solutions. Each package includes a thorough store audit, implementation of optimizations, and 30 days of post-launch support.",
+  },
+  {
+    question: "How long does the optimization process take?",
+    answer:
+      "The timeline varies based on your store's complexity and requirements. Typically, basic optimizations are completed within 7-10 business days. More complex custom development projects may take 2-3 weeks.",
+  },
+  {
+    question: "Will my store remain operational during optimization?",
+    answer:
+      "Yes! We implement all changes in a staging environment first and deploy during low-traffic periods. This ensures zero downtime and minimal impact on your business operations.",
+  },
+  {
+    question: "What if I need custom features developed?",
+    answer:
+      "We offer custom WooCommerce development starting at $999. This includes features like custom payment gateways, third-party integrations, custom plugins, and specialized functionality tailored to your needs.",
+  },
+  {
+    question: "How do we communicate during the project?",
+    answer:
+      "We use Discord for clear, real-time communication throughout the optimization process. You'll have direct access to our development team and regular progress updates.",
+  },
+  {
+    question: "What if I'm not satisfied with the results?",
+    answer:
+      "Your satisfaction is our priority. We provide detailed performance metrics before and after optimization. If any issues arise, we'll address them during the 30-day support period to ensure you're completely satisfied with the improvements.",
+  },
+  {
+    question: "Do you offer ongoing maintenance?",
+    answer:
+      "Yes, we offer monthly maintenance packages to keep your store optimized, secure, and up-to-date. This includes regular performance monitoring, security updates, and ongoing optimization improvements.",
+  },
+];
+---
+
+<div
+  class="grid grid-cols-1 gap-4 md:grid-cols-3 border-x p-8 border-dashed border-zinc-300 dark:border-zinc-700"
+>
+  <div>
+    <Text
+      tag="h2"
+      variant="textXL"
+      class="tracking-tighter font-semibold text-black dark:text-white"
+    >
+      Common Questions
+    </Text>
+    <div class="mt-2">
+      <Text tag="p" variant="textSM" class="text-zinc-500 dark:text-zinc-400">
+        Need more details?
+        <br />
+        <Text
+          tag="a"
+          class="underline hover:text-black dark:text-white duration-200"
+          href="mailto:support@woothasfast.com">Contact us</Text
+        >
+      </Text>
+    </div>
+  </div>
+  <div class="lg:col-span-2">
+    <div x-data="{selected:null}">
+      <ul
+        class="list-none text-black dark:text-white"
+        role="list"
+        @click="open = !open">{faq.map((item, index) => (
+    <li class="relative">
+      <button
+        class="w-full py-2 text-left focus:text-oxido"
+        @click={`selected !== ${index + 1} ? selected = ${index + 1} : selected = null`}
+        type="button"
+      >
+        <div class="items-center flex justify-between ">
+          <Text tag="p" variant="taxtBase" class="text-black dark:text-white">
+              {item.question}
+            </Text>
+          <svg
+            class="ml-4 duration-200 h-5 inline rotate-180 transform transition-transform w-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            :class="{'rotate-180': open, 'rotate-0': !open}"
+          >
+            <path
+              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+      </button>
+      <div
+        class="relative overflow-hidden duration-700 max-h-0 transition-all"
+        style=""
+        x-bind:style={`selected == ${index + 1} ? 'max-height: ' + $refs.container${index + 1}.scrollHeight + 'px' : ''`}
+        x-ref={`container${index + 1}`}
+      >
+        <div class="text-base py-8 pt-0 text-zinc-500 dark:text-zinc-400" set:html={item.answer} />
+      </div>
+    </li>
+  ))}
+      </ul>
+    </div>
+  </div>
+</div>
