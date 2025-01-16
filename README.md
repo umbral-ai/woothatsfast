@@ -1,75 +1,200 @@
-# Streamer
+# WooThatsFast - WooCommerce Development & Optimization Services
 
-## Template Integrations
-- Tailwind CSS v4 Beta 
-- Astro SEO - Powered by [@astrolib/seo](https://github.com/onwidget/astrolib/tree/main/packages/seo)
-- Astro Sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
+A modern, high-performance website built with Astro and TailwindCSS for WooCommerce development and optimization services.
 
-## Template Structure
+## 🚀 Quick Start
 
-The template follows a typical Astro project structure. You'll find the following key directories and files:
+### For Developers
 
+1. **Clone and Install**
+```bash
+git clone [repository-url]
+cd [project-directory]
+npm install
+```
+
+2. **Run Development Server**
+```bash
+npm run dev
+```
+This starts the development server at `http://localhost:3000`
+
+3. **Build for Production**
+```bash
+npm run build
+```
+
+4. **Preview Production Build**
+```bash
+npm run preview
+```
+
+### Available Commands
+
+| Command | Action |
+|---------|--------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run astro` | Run Astro CLI commands |
+
+## 📝 Content Management
+
+### Blog Posts
+
+Blog posts are stored in `src/content/blog/` as Markdown files. Each post needs:
+
+```markdown
+---
+title: "Your Post Title"
+description: "Brief description of the post"
+pubDate: 2024-01-25
+author: "Author Name"
+category: "Category Name"
+featured: false
+---
+
+Your content here...
+```
+
+To add a new blog post:
+1. Create a new `.md` file in `src/content/blog/`
+2. Copy the above template
+3. Fill in your content
+4. Save the file
+
+### Page Content
+
+Main pages are located in `src/pages/` and use the `.astro` extension. Each page consists of:
+- Page layout and structure
+- Component imports
+- Content sections
+
+To modify page content:
+1. Navigate to `src/pages/`
+2. Find the relevant page (e.g., `about.astro`, `tools.astro`)
+3. Edit the content within the markup
+
+### Services & Pricing
+
+Service information is stored in the page files. To update:
+
+1. Open `src/pages/index.astro` for main services
+2. Locate the pricing section
+3. Modify the prices and features as needed
+
+## 🎨 Styling
+
+The site uses TailwindCSS for styling. Key files:
+
+- `src/styles/global.css` - Global styles
+- `tailwind.config.mjs` - TailwindCSS configuration
+
+To modify styles:
+1. Use Tailwind classes in components
+2. Add custom styles to `global.css`
+3. Modify theme settings in `tailwind.config.mjs`
+
+## 📁 Project Structure
 
 ```
 /
-├── public/
+├── public/          # Static assets
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/  # Reusable components
+│   ├── content/     # Blog posts and page content
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # Page routes
+│   └── styles/      # Global styles
 └── package.json
 ```
 
-- `src/pages/`: Contains `.astro` and `.md` files. Each file becomes a route in your project based on its name.
-- `src/components/`: Ideal for placing your Astro/React/Vue/Svelte/Preact components.
-- `public/`: For static assets such as images that you want to serve directly.
+## 🔧 Configuration
 
-## Commands
+Key configuration files:
 
-All commands are run from the root of the project, from a terminal:
+- `astro.config.mjs` - Astro configuration
+- `tailwind.config.mjs` - TailwindCSS configuration
+- `tsconfig.json` - TypeScript configuration
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+## 🖼️ Adding Images
 
-Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
+1. Place images in the `public/` directory
+2. Reference them in content using:
+   - Markdown: `![Alt text](/image-name.jpg)`
+   - Components: `<img src="/image-name.jpg" alt="Alt text" />`
 
-------
-Updated on 21st October 2024
+## 🚀 Deployment
 
-## This update includes:
+The site is configured to deploy to Cloudflare Pages:
 
-- Added Tailwind CSS v4 Beta
-- Vanialla JS animation on Intro file 
+1. Build command: `npm run build`
+2. Output directory: `dist`
+3. Environment variables are managed in Cloudflare Dashboard
 
-On this version, Tailwind CSS is now beta the alpha version from Tailwind CSS V4, this means that there's no `tailwind.config.mjs` file anymore. From now on, all style will be added on the `css` file. You can find the styles on the `src/styles/global.css` file.
+## ⚡ Performance
 
+The site is optimized for performance:
+- Static site generation where possible
+- Dynamic rendering for interactive components
+- Image optimization via Cloudflare
+- Responsive design for all devices
 
-- Astro SEO by @astrolib/seo
-This update includes the integration of the Astro SEO package by @astrolib/seo, is an integration that makes managing your SEO easier in Astro projects. It is fully based on the excellent Next SEO library
+## 🤝 Getting Help
 
-- Reusable components
-This template now includes reusable components, such as the `Text` component:
+For technical issues:
+1. Check the [Astro documentation](https://docs.astro.build)
+2. Review [TailwindCSS documentation](https://tailwindcss.com/docs)
+3. Contact the development team
 
-- Text Component
-A flexible and reusable typography component for dynamic text elements. It allows you to:
+For content updates:
+1. Follow the content management guidelines above
+2. Test changes in development environment
+3. Request review before deploying to production
 
-- Dynamically set the HTML tag (e.g., `h1`, `p`, `span`) via the `tag` prop.
-- Apply predefined text styling variants (e.g., `displayXL`, `textMD`) for consistency across your project.
-- Add custom classes for additional styling with the `class` prop.
+## 🔒 Security
 
-Example usage:
-```astro
-<Text tag="h1" variant="displayXL" class="text-center">
-  Welcome to the new version!
-</Text>
-```
------
+- Keep dependencies updated
+- Use secure content practices
+- Follow deployment guidelines
+- Maintain backup procedures
 
-### [Support](https://lexingtonthemes.com/legal/support/)
-### [Documentation](https://lexingtonthemes.com/documentation/quick-start/)
-### [Get your bundle](https://lexingtonthemes.com)
+## 📱 Responsive Design
+
+The site is fully responsive across devices:
+- Mobile-first design
+- Breakpoint system
+- Flexible layouts
+- Optimized images
+
+## 🔄 Regular Maintenance
+
+Recommended maintenance tasks:
+1. Update dependencies monthly
+2. Review and update content quarterly
+3. Monitor performance metrics
+4. Backup content regularly
+
+## 📈 Analytics
+
+Analytics are available through:
+1. Cloudflare Analytics
+2. Custom tracking implementation
+3. Performance monitoring
+
+## 🌐 Browser Support
+
+The site supports:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
+
+## ⚖️ License
+
+[Add your license information here]
+
+---
+
+For additional support or questions, please contact [your contact information].
