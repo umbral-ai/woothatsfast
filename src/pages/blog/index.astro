@@ -10,20 +10,13 @@ const posts = await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
 });
 
-// Sort posts by date
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// Get featured post
 const featuredPost = sortedPosts.find(post => post.data.featured);
-
-// Get all categories
 const categories = [...new Set(posts.map(post => post.data.category))];
-
-// Group posts by category (excluding featured post)
 const postsByCategory = categories.reduce((acc, category) => {
   acc[category] = sortedPosts
     .filter(post => post.data.category === category && post.slug !== featuredPost?.slug)
-    .slice(0, 4); // Limit to 4 posts per category
+    .slice(0, 4);
   return acc;
 }, {});
 ---
@@ -35,7 +28,6 @@ const postsByCategory = categories.reduce((acc, category) => {
       <Navigation />
       
       <div class="flex flex-col gap-12 pb-12">
-        <!-- Header -->
         <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
           <div class="flex items-center gap-2 text-black dark:text-white">
             <div class="size-2 rounded-lg bg-green-500 animate-pulse"></div>
@@ -62,7 +54,6 @@ const postsByCategory = categories.reduce((acc, category) => {
           </Text>
         </div>
 
-        <!-- Category Filter -->
         <div class="border-x p-8 border-dashed border-zinc-300 dark:border-zinc-700">
           <div class="flex flex-wrap gap-4">
             <a 
@@ -88,13 +79,13 @@ const postsByCategory = categories.reduce((acc, category) => {
           </div>
         </div>
 
-        <!-- Featured Post -->
         {featuredPost && (
           <article class="relative border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
             <Text
               tag="p"
               variant="textSM"
               class="text-zinc-500 dark:text-zinc-400"
+              transition:name={`date-${featuredPost.slug}`}
             >
               {new Date(featuredPost.data.pubDate).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -107,12 +98,14 @@ const postsByCategory = categories.reduce((acc, category) => {
               tag="h2"
               variant="displaySM"
               class="font-serif italic text-black dark:text-white mt-2"
+              transition:name={`title-${featuredPost.slug}`}
             >
               {featuredPost.data.title}
             </Text>
             <Text
               variant="textBase"
               class="text-zinc-500 dark:text-zinc-400 mt-4"
+              transition:name={`description-${featuredPost.slug}`}
             >
               {featuredPost.data.description}
             </Text>
@@ -121,6 +114,7 @@ const postsByCategory = categories.reduce((acc, category) => {
                 tag="span"
                 variant="textSM"
                 class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-full"
+                transition:name={`category-${featuredPost.slug}`}
               >
                 {featuredPost.data.category}
               </Text>
@@ -128,6 +122,7 @@ const postsByCategory = categories.reduce((acc, category) => {
                 tag="span"
                 variant="textSM"
                 class="text-zinc-500 dark:text-zinc-400"
+                transition:name={`author-${featuredPost.slug}`}
               >
                 By {featuredPost.data.author}
               </Text>
@@ -135,7 +130,6 @@ const postsByCategory = categories.reduce((acc, category) => {
           </article>
         )}
 
-        <!-- Posts by Category -->
         {Object.entries(postsByCategory).map(([category, posts]) => (
           <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
             <Text
@@ -152,6 +146,7 @@ const postsByCategory = categories.reduce((acc, category) => {
                     tag="p"
                     variant="textSM"
                     class="text-zinc-500 dark:text-zinc-400"
+                    transition:name={`date-${post.slug}`}
                   >
                     {new Date(post.data.pubDate).toLocaleDateString('en-US', {
                       year: 'numeric',
@@ -164,12 +159,14 @@ const postsByCategory = categories.reduce((acc, category) => {
                     tag="h3"
                     variant="textLG"
                     class="font-medium text-black dark:text-white mt-2"
+                    transition:name={`title-${post.slug}`}
                   >
                     {post.data.title}
                   </Text>
                   <Text
                     variant="textBase"
                     class="text-zinc-500 dark:text-zinc-400 mt-2"
+                    transition:name={`description-${post.slug}`}
                   >
                     {post.data.description}
                   </Text>
@@ -177,6 +174,7 @@ const postsByCategory = categories.reduce((acc, category) => {
                     tag="span"
                     variant="textSM"
                     class="block text-zinc-500 dark:text-zinc-400 mt-4"
+                    transition:name={`author-${post.slug}`}
                   >
                     By {post.data.author}
                   </Text>

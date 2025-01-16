@@ -1,19 +1,15 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import { ViewTransitions } from 'astro:transitions';
 ---
 
-<html
-  lang="en"
-  class="scroll-smooth selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black"
->
+<html lang="en" class="scroll-smooth selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
   <head>
     <BaseHead />
-    <!-- Add Alpine.js -->
+    <ViewTransitions />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
-  <body
-    class="bg-[#f7f7f7] dark:bg-[#1a1c1f] flex flex-col min-h-screen mx-auto 2xl:max-w-7xl 2xl:border-x border-dashed border-zinc-300 dark:border-zinc-700 relative"
-  >
+  <body class="bg-[#f7f7f7] dark:bg-[#1a1c1f] flex flex-col min-h-screen mx-auto 2xl:max-w-7xl 2xl:border-x border-dashed border-zinc-300 dark:border-zinc-700 relative">
     <main class="flex-grow"><slot /></main>
   </body>
 </html>

@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-// Get related posts from the same category
 const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
   .filter(p => p.data.category === post.data.category && p.slug !== post.slug)
@@ -31,7 +30,6 @@ const relatedPosts = allPosts
       <Navigation />
       
       <div class="flex flex-col gap-12 mt-12">
-        <!-- Article Header -->
         <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
           <div class="flex items-center gap-2">
             <Text
@@ -49,6 +47,7 @@ const relatedPosts = allPosts
               tag="p"
               variant="textSM"
               class="text-zinc-500 dark:text-zinc-400"
+              transition:name={`date-${post.slug}`}
             >
               {new Date(post.data.pubDate).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -60,12 +59,14 @@ const relatedPosts = allPosts
               tag="h1"
               variant="displayLG"
               class="text-black dark:text-white tracking-wide text-balance font-serif italic mt-2"
+              transition:name={`title-${post.slug}`}
             >
               {post.data.title}
             </Text>
             <Text
               variant="textLG"
               class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
+              transition:name={`description-${post.slug}`}
             >
               {post.data.description}
             </Text>
@@ -74,6 +75,7 @@ const relatedPosts = allPosts
                 tag="span"
                 variant="textSM"
                 class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-full"
+                transition:name={`category-${post.slug}`}
               >
                 {post.data.category}
               </Text>
@@ -81,6 +83,7 @@ const relatedPosts = allPosts
                 tag="span"
                 variant="textSM"
                 class="text-zinc-500 dark:text-zinc-400"
+                transition:name={`author-${post.slug}`}
               >
                 By {post.data.author}
               </Text>
@@ -88,12 +91,10 @@ const relatedPosts = allPosts
           </div>
         </div>
 
-        <!-- Article Content -->
         <article class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700 prose dark:prose-invert max-w-none prose-zinc">
           <Content />
         </article>
 
-        <!-- Related Posts -->
         {relatedPosts.length > 0 && (
           <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
             <Text
@@ -110,6 +111,7 @@ const relatedPosts = allPosts
                     tag="p"
                     variant="textSM"
                     class="text-zinc-500 dark:text-zinc-400"
+                    transition:name={`date-${post.slug}`}
                   >
                     {new Date(post.data.pubDate).toLocaleDateString('en-US', {
                       year: 'numeric',
@@ -121,6 +123,7 @@ const relatedPosts = allPosts
                     tag="h3"
                     variant="textLG"
                     class="font-medium text-black dark:text-white mt-2"
+                    transition:name={`title-${post.slug}`}
                   >
                     <a href={`/blog/${post.slug}`} class="hover:text-zinc-600 dark:hover:text-zinc-300 duration-200">
                       {post.data.title}
@@ -129,6 +132,7 @@ const relatedPosts = allPosts
                   <Text
                     variant="textBase"
                     class="text-zinc-500 dark:text-zinc-400 mt-2"
+                    transition:name={`description-${post.slug}`}
                   >
                     {post.data.description}
                   </Text>

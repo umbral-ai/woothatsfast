@@ -17,6 +17,7 @@
   }
 }
 
+/* Typing animation */
 .typing-animation .cursor {
   display: inline-block;
   width: 3px;
@@ -38,27 +39,4 @@
 
 [x-cloak] {
   display: none !important;
-}
-
-/* Mobile menu transitions */
-.mobile-menu-enter {
-  opacity: 0;
-  transform: translateX(100%);
-}
-
-.mobile-menu-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 200ms ease-out, transform 200ms ease-out;
-}
-
-.mobile-menu-exit {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.mobile-menu-exit-active {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 200ms ease-in, transform 200ms ease-in;
 }
