@@ -1,4 +1,3 @@
-
 ---
 title: "Essential WooCommerce Security Best Practices"
 description: "Learn critical security measures to protect your WooCommerce store from common vulnerabilities and threats."
