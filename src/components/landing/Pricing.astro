@@ -8,34 +8,34 @@ import StarTopLeft from "../assets/StarTopLeft.astro";
 import StarTopRight from "../assets/StarTopRight.astro";
 const target = [
   {
-    item: "...loads slowly",
+    item: "...slow loading times",
   },
   {
-    item: "...has poor mobile experience",
+    item: "...poor mobile experience",
   },
   {
-    item: "...struggles with checkout process",
+    item: "...checkout cart struggles",
   },
   {
-    item: "...needs payment gateway optimization",
+    item: "...missing payment gateway optimization",
   },
   {
-    item: "...requires custom features",
+    item: "...needed custom features",
   },
   {
-    item: "...has inventory management issues",
+    item: "...inventory management issues",
   },
   {
-    item: "...needs better product displays",
+    item: "...poor product displays",
   },
   {
-    item: "...lacks performance optimization",
+    item: "...failed image loading",
   },
   {
-    item: "...requires security improvements",
+    item: "...questionable store security",
   },
   {
-    item: "...needs third-party integrations",
+    item: "...missing third-party integrations",
   },
 ];
 const listItems = [
@@ -64,10 +64,10 @@ const listItems = [
         variant="displaySM"
         class="font-serif italic text-black dark:text-white"
       >
-        Custom WooCommerce Solutions
+        We Fix The Most Common WooCommerce Problems
       </Text>
       <Text tag="p" variant="textBase" class="text-zinc-500 dark:text-zinc-400">
-        Expert optimization and development for your online store.
+        You're missing out on lost revenue due to poor performance.
       </Text>
     </div>
     <div class="flex flex-col justify-between relative">
@@ -76,7 +76,7 @@ const listItems = [
         variant="textBase"
         class="tracking-tight text-black dark:text-white relative"
       >
-        Is your WooCommerce store experiencing:
+        Is your store experiencing:
       </Text>
       <ul
         class="grid grid-cols-1 2xl:text-base mt-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2 md:col-span-2 relative"
@@ -86,21 +86,20 @@ const listItems = [
             <li>
               <div class="flex gap-2 items-center text-zinc-500 dark:text-zinc-400">
                 <div class=" ring-1 ring-zinc-200 dark:ring-zinc-700 p-[0.110rem] bg-white/5 shadow  rounded-sm ">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-check size-2.5"
-                  >
-                    <>
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M5 12l5 5l10 -10" />
-                    </>
-                  </svg>
+                 <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="red"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-exclamation size-2.5"
+              >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 5v8" />
+                  <circle cx="12" cy="18" r="1.5" fill="red" stroke="none" />
+              </svg>
                 </div>
                 {item}
               </div>
@@ -113,16 +112,16 @@ const listItems = [
         variant="textBase"
         class="tracking-tighter text-black dark:text-white mt-8 relative"
       >
-        Let's optimize your store for peak performance.
+        Let's get your store running at peak performance. The results speak for themselves
       </Text>
     </div>
     <div
       class="border-t flex flex-col pt-4 mt-4 text-zinc-500 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700"
     >
       <Text tag="p" variant="textXS" class="2xl:text-base">
-        We specialize in WooCommerce optimization, custom development, payment gateway integration, 
-        security enhancements, and performance tuning. Our team of experts will analyze your store
-        and implement solutions that drive results.
+        We provide full-spectrum WooCommerce solutions, ranging from performance tuning 
+        and custom development to secure payment integrations and security upgrades. 
+        Our experts thoroughly analyze your store to maximize efficiency and boost outcomes.
       </Text>
       <Text
         tag="span"
@@ -154,7 +153,7 @@ const listItems = [
           variant="displaySM"
           class="font-serif italic tracking-wide text-black dark:text-white"
         >
-          Store Optimization Package
+          E-Comm Performance Package
         </Text>
       </div>
       <Text tag="p" variant="textBase" class="text-black dark:text-white">
@@ -181,7 +180,19 @@ const listItems = [
             listItems.map((item) => (
               <li class="flex gap-2 items-center 2xl:items-start">
                 <Text tag="p" variant="textSM" class="2xl:text.base">
-                  <Text tag="span">—</Text>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="green"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-check size-2.5"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l5 5l10 -10" />
+                </svg>
                   <Text tag="span">{item}</Text>
                 </Text>
               </li>
