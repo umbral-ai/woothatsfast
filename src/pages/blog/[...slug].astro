@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Shadow from "@/components/global/Shadow.astro";
+import Footer from "@/components/global/Footer.astro";
+import Navigation from "@/components/global/Navigation.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Get related posts from the same category
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(p => p.data.category === post.data.category && p.slug !== post.slug)
+  .slice(0, 2);
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Shadow />
+    <div class="p-8 lg:px-44 lg:py-24 2xl:px-24 relative">
+      <Navigation />
+      
+      <div class="flex flex-col gap-12 mt-12">
+        <!-- Article Header -->
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <div class="flex items-center gap-2">
+            <Text
+              tag="a"
+              href="/blog"
+              variant="textSM"
+              class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white duration-200"
+            >
+              ← Back to Blog
+            </Text>
+          </div>
+          
+          <div class="mt-8">
+            <Text
+              tag="p"
+              variant="textSM"
+              class="text-zinc-500 dark:text-zinc-400"
+            >
+              {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </Text>
+            <Text
+              tag="h1"
+              variant="displayLG"
+              class="text-black dark:text-white tracking-wide text-balance font-serif italic mt-2"
+            >
+              {post.data.title}
+            </Text>
+            <Text
+              variant="textLG"
+              class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
+            >
+              {post.data.description}
+            </Text>
+            <div class="flex items-center gap-4 mt-6">
+              <Text
+                tag="span"
+                variant="textSM"
+                class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-full"
+              >
+                {post.data.category}
+              </Text>
+              <Text
+                tag="span"
+                variant="textSM"
+                class="text-zinc-500 dark:text-zinc-400"
+              >
+                By {post.data.author}
+              </Text>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700 prose dark:prose-invert max-w-none prose-zinc">
+          <Content />
+        </article>
+
+        <!-- Related Posts -->
+        {relatedPosts.length > 0 && (
+          <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+            <Text
+              tag="h2"
+              variant="displayXS"
+              class="font-serif italic text-black dark:text-white mb-8"
+            >
+              Related Articles
+            </Text>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {relatedPosts.map(post => (
+                <article>
+                  <Text
+                    tag="p"
+                    variant="textSM"
+                    class="text-zinc-500 dark:text-zinc-400"
+                  >
+                    {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </Text>
+                  <Text
+                    tag="h3"
+                    variant="textLG"
+                    class="font-medium text-black dark:text-white mt-2"
+                  >
+                    <a href={`/blog/${post.slug}`} class="hover:text-zinc-600 dark:hover:text-zinc-300 duration-200">
+                      {post.data.title}
+                    </a>
+                  </Text>
+                  <Text
+                    variant="textBase"
+                    class="text-zinc-500 dark:text-zinc-400 mt-2"
+                  >
+                    {post.data.description}
+                  </Text>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <Footer />
+    </div>
+  </section>
+</BaseLayout>

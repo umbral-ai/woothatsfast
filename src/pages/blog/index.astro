@@ -1,0 +1,193 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Shadow from "@/components/global/Shadow.astro";
+import Footer from "@/components/global/Footer.astro";
+import Navigation from "@/components/global/Navigation.astro";
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+
+// Sort posts by date
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Get featured post
+const featuredPost = sortedPosts.find(post => post.data.featured);
+
+// Get all categories
+const categories = [...new Set(posts.map(post => post.data.category))];
+
+// Group posts by category (excluding featured post)
+const postsByCategory = categories.reduce((acc, category) => {
+  acc[category] = sortedPosts
+    .filter(post => post.data.category === category && post.slug !== featuredPost?.slug)
+    .slice(0, 4); // Limit to 4 posts per category
+  return acc;
+}, {});
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Shadow />
+    <div class="p-8 lg:px-44 lg:py-24 2xl:px-24 relative">
+      <Navigation />
+      
+      <div class="flex flex-col gap-12 pb-12">
+        <!-- Header -->
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <div class="flex items-center gap-2 text-black dark:text-white">
+            <div class="size-2 rounded-lg bg-green-500 animate-pulse"></div>
+            <Text
+              tag="p"
+              variant="textSM"
+              class="text-black dark:text-white"
+            >
+              WooCommerce Insights
+            </Text>
+          </div>
+          <Text
+            tag="h1"
+            variant="displayLG"
+            class="text-black dark:text-white tracking-wide text-balance font-serif italic"
+          >
+            Blog & Resources
+          </Text>
+          <Text
+            variant="textLG"
+            class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
+          >
+            Expert insights, tutorials, and best practices for WooCommerce development and optimization.
+          </Text>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="border-x p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <div class="flex flex-wrap gap-4">
+            <a 
+              href="/blog"
+              class={`px-4 py-2 rounded-full text-sm transition-colors duration-200 
+                ${Astro.url.pathname === '/blog' 
+                  ? 'bg-black text-white dark:bg-white dark:text-black' 
+                  : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700'}`}
+            >
+              All Posts
+            </a>
+            {categories.map(category => (
+              <a 
+                href={`/blog/category/${category.toLowerCase()}`}
+                class={`px-4 py-2 rounded-full text-sm transition-colors duration-200 
+                  ${Astro.url.pathname === `/blog/category/${category.toLowerCase()}` 
+                    ? 'bg-black text-white dark:bg-white dark:text-black' 
+                    : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700'}`}
+              >
+                {category}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Featured Post -->
+        {featuredPost && (
+          <article class="relative border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+            <Text
+              tag="p"
+              variant="textSM"
+              class="text-zinc-500 dark:text-zinc-400"
+            >
+              {new Date(featuredPost.data.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </Text>
+            <a href={`/blog/${featuredPost.slug}`} class="absolute inset-0 z-10"></a>
+            <Text
+              tag="h2"
+              variant="displaySM"
+              class="font-serif italic text-black dark:text-white mt-2"
+            >
+              {featuredPost.data.title}
+            </Text>
+            <Text
+              variant="textBase"
+              class="text-zinc-500 dark:text-zinc-400 mt-4"
+            >
+              {featuredPost.data.description}
+            </Text>
+            <div class="flex items-center gap-4 mt-6">
+              <Text
+                tag="span"
+                variant="textSM"
+                class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-full"
+              >
+                {featuredPost.data.category}
+              </Text>
+              <Text
+                tag="span"
+                variant="textSM"
+                class="text-zinc-500 dark:text-zinc-400"
+              >
+                By {featuredPost.data.author}
+              </Text>
+            </div>
+          </article>
+        )}
+
+        <!-- Posts by Category -->
+        {Object.entries(postsByCategory).map(([category, posts]) => (
+          <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+            <Text
+              tag="h2"
+              variant="displayXS"
+              class="font-serif italic text-black dark:text-white mb-8"
+            >
+              {category}
+            </Text>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {posts.map(post => (
+                <article class="relative">
+                  <Text
+                    tag="p"
+                    variant="textSM"
+                    class="text-zinc-500 dark:text-zinc-400"
+                  >
+                    {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </Text>
+                  <a href={`/blog/${post.slug}`} class="absolute inset-0 z-10"></a>
+                  <Text
+                    tag="h3"
+                    variant="textLG"
+                    class="font-medium text-black dark:text-white mt-2"
+                  >
+                    {post.data.title}
+                  </Text>
+                  <Text
+                    variant="textBase"
+                    class="text-zinc-500 dark:text-zinc-400 mt-2"
+                  >
+                    {post.data.description}
+                  </Text>
+                  <Text
+                    tag="span"
+                    variant="textSM"
+                    class="block text-zinc-500 dark:text-zinc-400 mt-4"
+                  >
+                    By {post.data.author}
+                  </Text>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Footer />
+    </div>
+  </section>
+</BaseLayout>

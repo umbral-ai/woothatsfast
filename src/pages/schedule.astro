@@ -1,0 +1,88 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Shadow from "@/components/global/Shadow.astro";
+import Navigation from "@/components/global/Navigation.astro";
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Shadow />
+    <div class="p-8 lg:px-44 lg:py-24 2xl:px-24 relative">
+      <Navigation />
+      
+      <div class="flex flex-col gap-12 mt-12">
+        <div class="border p-8 border-dashed border-zinc-300 dark:border-zinc-700">
+          <div class="flex items-center gap-2 text-black dark:text-white">
+            <div class="size-2 rounded-lg bg-green-500 animate-pulse"></div>
+            <Text
+              tag="p"
+              variant="textSM"
+              class="text-black dark:text-white"
+            >
+              Schedule a Consultation
+            </Text>
+          </div>
+          <Text
+            tag="h1"
+            variant="displayLG"
+            class="text-black dark:text-white tracking-wide text-balance font-serif italic"
+          >
+            Let's Discuss Your Project
+          </Text>
+          <Text
+            variant="textLG"
+            class="text-zinc-500 dark:text-zinc-400 mt-4 text-pretty max-w-2xl"
+          >
+            Book a consultation to discuss your WooCommerce optimization needs and how we can help improve your store's performance.
+          </Text>
+        </div>
+
+        <!-- Cal embed wrapper -->
+        <div class="border border-dashed border-zinc-300 dark:border-zinc-700 aspect-[3/2] w-full">
+          <iframe
+            src="https://cal.com/broke-dev/services-review"
+            class="w-full h-full"
+            frameborder="0"
+            allow="camera *; microphone *; autoplay *; clipboard-write *"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  // Cal customization
+  (function (C, A, L) {
+    let p = function (a, ar) {
+      a.q.push(ar);
+    };
+    let d = C.document;
+    C.Cal =
+      C.Cal ||
+      function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () {
+            p(api, arguments);
+          };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          typeof namespace === "string"
+            ? (cal.ns[namespace] = api) && p(api, ar)
+            : p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+  })(window, "https://cal.com/embed.js", "init");
+  Cal("init", {styles: {branding: {brandColor: "#000000"}}});
+</script>
